@@ -12,7 +12,7 @@ RUN pip3 install --user docker
 # Install Molecule
 RUN pip3 install --user ansible \
                         boto \
-                        boto3
+                        boto3 \
                         molecule \
                         molecule-ec2
 
