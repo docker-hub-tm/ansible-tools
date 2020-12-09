@@ -73,7 +73,7 @@ molecule-vagrant \
 RUN python3 -m pip install -U wheel
 ADD . .
 RUN \
-    python3 -m pip install -U wheel \
+    python3 -m pip wheel \
     -w dist --no-build-isolation \
     ansible \
     boto \
