@@ -55,26 +55,16 @@ python3 \
 python3-dev
 
 ENV MOLECULE_PLUGINS="\
-molecule-azure \
-molecule-containers \
 molecule-docker \
-molecule-digitalocean \
 molecule-ec2 \
-molecule-gce \
-molecule-hetznercloud \
-molecule-libvirt \
-molecule-lxd \
-molecule-podman \
-molecule-openstack \
-molecule-vagrant \
 "
 
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=917006
 RUN python3 -m pip install -U wheel
 ADD . .
 RUN \
-    python3 -m pip install \
-    wheel \
+    python3 -m pip wheel \
+    -w dist --no-build-isolation \
     ansible \
     boto \
     boto3 \
@@ -150,18 +140,8 @@ etc \
 "
 
 ENV MOLECULE_PLUGINS="\
-molecule-azure \
-molecule-containers \
 molecule-docker \
-molecule-digitalocean \
 molecule-ec2 \
-molecule-gce \
-molecule-hetznercloud \
-molecule-libvirt \
-molecule-lxd \
-molecule-openstack \
-molecule-podman \
-molecule-vagrant \
 "
 
 RUN \
