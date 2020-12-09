@@ -139,7 +139,7 @@ ruby-rdoc \
 
 ENV PIP_INSTALL_ARGS="\
 --only-binary :all: \
---no-index
+--no-index \
 "
 
 ENV GEM_PACKAGES="\
