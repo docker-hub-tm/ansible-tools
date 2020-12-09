@@ -14,6 +14,8 @@ RUN pip3 install --user ansible \
                         boto \
                         boto3 \
                         molecule \
-                        molecule-ec2
+                        molecule-ec2 \
+                        ansible-lint \
+                        yamllint
 
 ENV PATH /root/.local/bin:/root/bin:${PATH}
