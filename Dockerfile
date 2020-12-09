@@ -1,4 +1,4 @@
-z# This is a multi-stage build which requires Docker 17.05 or higher
+# This is a multi-stage build which requires Docker 17.05 or higher
 FROM docker.io/alpine:edge as molecule-builder
 
 WORKDIR /usr/src/molecule
