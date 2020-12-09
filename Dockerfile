@@ -167,4 +167,4 @@ RUN \
     molecule drivers
 # running molecule commands adds a minimal level fail-safe about build success
 
-ENV SHELL /bin/bash
+ENV SHELL /bin/ash
