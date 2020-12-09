@@ -75,7 +75,13 @@ ADD . .
 RUN \
     python3 -m pip wheel \
     -w dist --no-build-isolation \
-    molecule ansible-lint testinfra ${MOLECULE_PLUGINS}
+    ansible \
+    boto \
+    boto3 \
+    molecule \
+    ansible-lint \
+    testinfra \
+    ${MOLECULE_PLUGINS}
 RUN ls -1 dist/
 
 # ✄---------------------------------------------------------------------
@@ -170,7 +176,13 @@ COPY --from=molecule-builder \
 RUN \
     python3 -m pip install \
     ${PIP_INSTALL_ARGS} \
-    molecule ansible-lint testinfra ${MOLECULE_PLUGINS} && \
+    ansible \
+    boto \
+    boto3 \
+    molecule \
+    ansible-lint \
+    testinfra \
+    ${MOLECULE_PLUGINS} && \
     molecule --version && \
     molecule drivers
 # running molecule commands adds a minimal level fail-safe about build success
