@@ -73,7 +73,7 @@ molecule-vagrant \
 RUN python3 -m pip install -U wheel
 ADD . .
 RUN \
-    python3 -m pip wheel \
+    python3 -m pip install -U wheel \
     -w dist --no-build-isolation \
     ansible \
     boto \
@@ -139,8 +139,7 @@ ruby-rdoc \
 
 ENV PIP_INSTALL_ARGS="\
 --only-binary :all: \
---no-index \
--f /usr/src/molecule/dist \
+--no-index
 "
 
 ENV GEM_PACKAGES="\
@@ -174,7 +173,7 @@ COPY --from=molecule-builder \
     /usr/src/molecule/dist \
     /usr/src/molecule/dist
 RUN \
-    python3 -m pip install \
+    python3 -m pip install -U \
     ${PIP_INSTALL_ARGS} \
     ansible \
     boto \
