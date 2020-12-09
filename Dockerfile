@@ -1,4 +1,4 @@
-# This is a multi-stage build which requires Docker 17.05 or higher
+z# This is a multi-stage build which requires Docker 17.05 or higher
 FROM docker.io/alpine:edge as molecule-builder
 
 WORKDIR /usr/src/molecule
@@ -75,10 +75,9 @@ ADD . .
 RUN \
     python3 -m pip wheel \
     -w dist --no-build-isolation \
-    ansible \
     boto \
     boto3 \
-    molecule \
+    molecule[ansible] \
     ansible-lint \
     testinfra \
     ${MOLECULE_PLUGINS}
@@ -140,6 +139,7 @@ ruby-rdoc \
 ENV PIP_INSTALL_ARGS="\
 --only-binary :all: \
 --no-index \
+-f /usr/src/molecule/dist \
 "
 
 ENV GEM_PACKAGES="\
@@ -173,12 +173,11 @@ COPY --from=molecule-builder \
     /usr/src/molecule/dist \
     /usr/src/molecule/dist
 RUN \
-    python3 -m pip install -U \
+    python3 -m pip install \
     ${PIP_INSTALL_ARGS} \
-    ansible \
     boto \
     boto3 \
-    molecule \
+    molecule[ansible] \
     ansible-lint \
     testinfra \
     ${MOLECULE_PLUGINS} && \
