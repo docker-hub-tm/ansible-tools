@@ -15,5 +15,3 @@ RUN pip3 install --user ansible \
                         boto3 \
                         molecule \
                         molecule-ec2
-
-CMD ["/bin/sh"]
